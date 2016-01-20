@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140F79401C4E50D900950B0A /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F793F1C4E50D900950B0A /* Contacts.framework */; };
+		140F79421C4E50E300950B0A /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F79411C4E50E300950B0A /* ContactsUI.framework */; };
 		14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAB1C4E1D0E004DDE80 /* main.m */; };
 		14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAE1C4E1D0E004DDE80 /* AppDelegate.m */; };
-		14A58BB21C4E1D0E004DDE80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BB11C4E1D0E004DDE80 /* ViewController.m */; };
-		14A58BB51C4E1D0E004DDE80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB31C4E1D0E004DDE80 /* Main.storyboard */; };
 		14A58BB71C4E1D0E004DDE80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB61C4E1D0E004DDE80 /* Assets.xcassets */; };
 		14A58BBA1C4E1D0E004DDE80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB81C4E1D0E004DDE80 /* LaunchScreen.storyboard */; };
 		14A58BC51C4E1D0E004DDE80 /* ContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BC41C4E1D0E004DDE80 /* ContactsTests.m */; };
 		14A58BD01C4E1D0E004DDE80 /* ContactsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BCF1C4E1D0E004DDE80 /* ContactsUITests.m */; };
+		14A58BDF1C4E1D5F004DDE80 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BDE1C4E1D5F004DDE80 /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
+		14A58BE21C4E2035004DDE80 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE11C4E2035004DDE80 /* FriendCell.m */; settings = {ASSET_TAGS = (); }; };
+		14A58BE51C4E2357004DDE80 /* FriendData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE41C4E2357004DDE80 /* FriendData.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140F793F1C4E50D900950B0A /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		140F79411C4E50E300950B0A /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		14A58BA71C4E1D0E004DDE80 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58BAB1C4E1D0E004DDE80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		14A58BAD1C4E1D0E004DDE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		14A58BAE1C4E1D0E004DDE80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		14A58BB01C4E1D0E004DDE80 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		14A58BB11C4E1D0E004DDE80 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		14A58BB41C4E1D0E004DDE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14A58BB61C4E1D0E004DDE80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14A58BB91C4E1D0E004DDE80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14A58BBB1C4E1D0E004DDE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +53,12 @@
 		14A58BCB1C4E1D0E004DDE80 /* ContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58BCF1C4E1D0E004DDE80 /* ContactsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsUITests.m; sourceTree = "<group>"; };
 		14A58BD11C4E1D0E004DDE80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14A58BDD1C4E1D5F004DDE80 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		14A58BDE1C4E1D5F004DDE80 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		14A58BE01C4E2035004DDE80 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		14A58BE11C4E2035004DDE80 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		14A58BE31C4E2357004DDE80 /* FriendData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendData.h; sourceTree = "<group>"; };
+		14A58BE41C4E2357004DDE80 /* FriendData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140F79421C4E50E300950B0A /* ContactsUI.framework in Frameworks */,
+				140F79401C4E50D900950B0A /* Contacts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +91,8 @@
 		14A58B9E1C4E1D0D004DDE80 = {
 			isa = PBXGroup;
 			children = (
+				140F79411C4E50E300950B0A /* ContactsUI.framework */,
+				140F793F1C4E50D900950B0A /* Contacts.framework */,
 				14A58BA91C4E1D0E004DDE80 /* Contacts */,
 				14A58BC31C4E1D0E004DDE80 /* ContactsTests */,
 				14A58BCE1C4E1D0E004DDE80 /* ContactsUITests */,
@@ -103,13 +115,16 @@
 			children = (
 				14A58BAD1C4E1D0E004DDE80 /* AppDelegate.h */,
 				14A58BAE1C4E1D0E004DDE80 /* AppDelegate.m */,
-				14A58BB01C4E1D0E004DDE80 /* ViewController.h */,
-				14A58BB11C4E1D0E004DDE80 /* ViewController.m */,
-				14A58BB31C4E1D0E004DDE80 /* Main.storyboard */,
 				14A58BB61C4E1D0E004DDE80 /* Assets.xcassets */,
 				14A58BB81C4E1D0E004DDE80 /* LaunchScreen.storyboard */,
 				14A58BBB1C4E1D0E004DDE80 /* Info.plist */,
 				14A58BAA1C4E1D0E004DDE80 /* Supporting Files */,
+				14A58BDD1C4E1D5F004DDE80 /* RootViewController.h */,
+				14A58BDE1C4E1D5F004DDE80 /* RootViewController.m */,
+				14A58BE01C4E2035004DDE80 /* FriendCell.h */,
+				14A58BE11C4E2035004DDE80 /* FriendCell.m */,
+				14A58BE31C4E2357004DDE80 /* FriendData.h */,
+				14A58BE41C4E2357004DDE80 /* FriendData.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -245,7 +260,6 @@
 			files = (
 				14A58BBA1C4E1D0E004DDE80 /* LaunchScreen.storyboard in Resources */,
 				14A58BB71C4E1D0E004DDE80 /* Assets.xcassets in Resources */,
-				14A58BB51C4E1D0E004DDE80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14A58BB21C4E1D0E004DDE80 /* ViewController.m in Sources */,
 				14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */,
 				14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */,
+				14A58BE51C4E2357004DDE80 /* FriendData.m in Sources */,
+				14A58BDF1C4E1D5F004DDE80 /* RootViewController.m in Sources */,
+				14A58BE21C4E2035004DDE80 /* FriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +324,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		14A58BB31C4E1D0E004DDE80 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14A58BB41C4E1D0E004DDE80 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		14A58BB81C4E1D0E004DDE80 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -496,6 +504,7 @@
 				14A58BD61C4E1D0E004DDE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14A58BD71C4E1D0E004DDE80 /* Build configuration list for PBXNativeTarget "ContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +513,7 @@
 				14A58BD91C4E1D0E004DDE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14A58BDA1C4E1D0E004DDE80 /* Build configuration list for PBXNativeTarget "ContactsUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +522,7 @@
 				14A58BDC1C4E1D0E004DDE80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
