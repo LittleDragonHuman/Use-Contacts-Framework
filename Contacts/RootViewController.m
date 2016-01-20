@@ -2,12 +2,13 @@
 //  RootViewController.m
 //  Contacts
 //
-//  Created by 冯莉娅 on 16/1/19.
+//  Created by fly on 16/1/19.
 //  Copyright © 2016年 fly. All rights reserved.
 //
 
 #import <Contacts/Contacts.h>
 #import "RootViewController.h"
+#import "FriendDetailViewController.h"
 #import "FriendCell.h"
 
 static NSString *cellIdentifier = @"friendCell";
@@ -24,9 +25,9 @@ static NSString *cellIdentifier = @"friendCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
-    
     self.navigationItem.title = @"All Friends";
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewFriend)];
+    self.navigationItem.rightBarButtonItem = rightItem;
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
@@ -34,11 +35,15 @@ static NSString *cellIdentifier = @"friendCell";
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
-    
     [self.collectionView registerClass:[FriendCell class] forCellWithReuseIdentifier:cellIdentifier];
 
     self.allFriends = [NSMutableArray array];
     
+    [self constructFriends];
+}
+
+- (void)constructFriends
+{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self fetchAllFriends];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -81,16 +86,35 @@ static NSString *cellIdentifier = @"friendCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CNContact *friend = self.allFriends[indexPath.row];
+    [self showFriendDetailWithFriend:friend];
 }
 
 - (void)fetchAllFriends
 {
+    [self.allFriends removeAllObjects];
     CNContactStore *store = [[CNContactStore alloc] init];
-    CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey]];
+    CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactGivenNameKey,CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey]];
     typeof(&*self) __weak weakSelf = self;
     [store enumerateContactsWithFetchRequest:request error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
         [weakSelf.allFriends addObject:contact];
     }];
+}
+
+- (void)addNewFriend
+{
+    [self showFriendDetailWithFriend:nil];
+}
+
+- (void)showFriendDetailWithFriend:(CNContact *)friend
+{
+    typeof(&*self) __weak weakSelf = self;
+    FriendDetailViewController *detailVC = [[FriendDetailViewController alloc] init];
+    detailVC.contact = friend;
+    detailVC.block = ^(BOOL isFinished) {
+        [weakSelf constructFriends]; //此处应该用弱引用
+    };
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

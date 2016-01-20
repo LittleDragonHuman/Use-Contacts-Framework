@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		140F79401C4E50D900950B0A /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F793F1C4E50D900950B0A /* Contacts.framework */; };
 		140F79421C4E50E300950B0A /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F79411C4E50E300950B0A /* ContactsUI.framework */; };
+		140F794B1C4F300D00950B0A /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794A1C4F300D00950B0A /* FriendDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		140F794E1C4F54C500950B0A /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794D1C4F54C500950B0A /* EditCell.m */; settings = {ASSET_TAGS = (); }; };
 		14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAB1C4E1D0E004DDE80 /* main.m */; };
 		14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAE1C4E1D0E004DDE80 /* AppDelegate.m */; };
 		14A58BB71C4E1D0E004DDE80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB61C4E1D0E004DDE80 /* Assets.xcassets */; };
@@ -40,6 +42,10 @@
 /* Begin PBXFileReference section */
 		140F793F1C4E50D900950B0A /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		140F79411C4E50E300950B0A /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
+		140F79491C4F300D00950B0A /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailViewController.h; sourceTree = "<group>"; };
+		140F794A1C4F300D00950B0A /* FriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailViewController.m; sourceTree = "<group>"; };
+		140F794C1C4F54C500950B0A /* EditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCell.h; sourceTree = "<group>"; };
+		140F794D1C4F54C500950B0A /* EditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCell.m; sourceTree = "<group>"; };
 		14A58BA71C4E1D0E004DDE80 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A58BAB1C4E1D0E004DDE80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		14A58BAD1C4E1D0E004DDE80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +131,10 @@
 				14A58BE11C4E2035004DDE80 /* FriendCell.m */,
 				14A58BE31C4E2357004DDE80 /* FriendData.h */,
 				14A58BE41C4E2357004DDE80 /* FriendData.m */,
+				140F79491C4F300D00950B0A /* FriendDetailViewController.h */,
+				140F794A1C4F300D00950B0A /* FriendDetailViewController.m */,
+				140F794C1C4F54C500950B0A /* EditCell.h */,
+				140F794D1C4F54C500950B0A /* EditCell.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -285,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */,
+				140F794B1C4F300D00950B0A /* FriendDetailViewController.m in Sources */,
 				14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */,
+				140F794E1C4F54C500950B0A /* EditCell.m in Sources */,
 				14A58BE51C4E2357004DDE80 /* FriendData.m in Sources */,
 				14A58BDF1C4E1D5F004DDE80 /* RootViewController.m in Sources */,
 				14A58BE21C4E2035004DDE80 /* FriendCell.m in Sources */,
