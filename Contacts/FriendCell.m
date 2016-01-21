@@ -44,7 +44,9 @@ static const NSInteger commonSpace = 10;
 - (void)bindModel:(id)model
 {
     CNContact *contact = (CNContact *)model;
+    
     self.nameLabel.text = [NSString stringWithFormat:@"姓名: %@ %@", contact.familyName, contact.givenName];
+    
     NSArray *phones = contact.phoneNumbers;
     if (phones && phones.count > 0) {
         CNLabeledValue *firstPhone = phones[0];

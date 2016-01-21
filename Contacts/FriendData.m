@@ -146,4 +146,12 @@
 
     return contact;
 }
+
++ (void)multableContactWithContact:(CNMutableContact *)tmpContact realContact:(CNMutableContact *)realContact
+{
+    realContact.givenName = tmpContact.givenName;
+    realContact.familyName = tmpContact.familyName;
+    realContact.phoneNumbers = tmpContact.phoneNumbers;
+    realContact.emailAddresses = tmpContact.emailAddresses;
+}
 @end

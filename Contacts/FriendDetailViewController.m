@@ -32,8 +32,15 @@ static NSString *headerIdentifier = @"sectionHeader";
     else {
         self.navigationItem.title = @"New Contact";
     }
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveContact)];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveContact)];
+    
+    if (self.contact) {
+        UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleDone target:self action:@selector(deleteContact)];
+        self.navigationItem.rightBarButtonItems = @[deleteItem, saveItem];
+    }
+    else {
+        self.navigationItem.rightBarButtonItem = saveItem;
+    }
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
@@ -105,11 +112,35 @@ static NSString *headerIdentifier = @"sectionHeader";
 - (void)saveContact
 {
     //在保存时，禁止再次进行编辑操作，否则会保存最后一次的数据，此处需增加loading状态，暂时不添加了。
-    CNMutableContact *contact = [FriendData parseDatasToContact:self.dataArray];
+    CNMutableContact *tmpContact = [FriendData parseDatasToContact:self.dataArray];
     CNSaveRequest *request = [CNSaveRequest new];
-    [request addContact:contact toContainerWithIdentifier:nil];
+    if (self.contact) {
+        CNMutableContact *contact = (CNMutableContact *)[self.contact mutableCopy];
+        [FriendData multableContactWithContact:tmpContact realContact:contact];
+        [request updateContact:contact];
+    }
+    else {
+        [request addContact:tmpContact toContainerWithIdentifier:nil];
+    }
     CNContactStore *store = [CNContactStore new];
-    
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL result = [store executeSaveRequest:request error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (self.block) {
+                self.block(result);
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        });
+    });
+}
+
+- (void)deleteContact
+{
+    CNMutableContact *contact = (CNMutableContact *)[self.contact mutableCopy];
+    CNSaveRequest *request = [CNSaveRequest new];
+    [request deleteContact:contact];
+    CNContactStore *store = [CNContactStore new];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BOOL result = [store executeSaveRequest:request error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{

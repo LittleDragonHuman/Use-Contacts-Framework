@@ -35,4 +35,6 @@ typedef NS_ENUM(NSInteger, FriendDetailInfoType) {
 
 + (CNMutableContact *)parseDatasToContact:(NSArray *)datas;
 
++ (void)multableContactWithContact:(CNMutableContact *)tmpContact realContact:(CNMutableContact *)realContact;
+
 @end
