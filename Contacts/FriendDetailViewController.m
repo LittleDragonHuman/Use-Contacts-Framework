@@ -9,6 +9,7 @@
 #import "FriendDetailViewController.h"
 #import "EditCell.h"
 #import "FriendData.h"
+#import "ContactAccess.h"
 
 static NSString *cellIdentifier = @"editCell";
 static NSString *headerIdentifier = @"sectionHeader";
@@ -111,45 +112,67 @@ static NSString *headerIdentifier = @"sectionHeader";
 
 - (void)saveContact
 {
-    //在保存时，禁止再次进行编辑操作，否则会保存最后一次的数据，此处需增加loading状态，暂时不添加了。
-    CNMutableContact *tmpContact = [FriendData parseDatasToContact:self.dataArray];
-    CNSaveRequest *request = [CNSaveRequest new];
-    if (self.contact) {
-        CNMutableContact *contact = (CNMutableContact *)[self.contact mutableCopy];
-        [FriendData multableContactWithContact:tmpContact realContact:contact];
-        [request updateContact:contact];
-    }
-    else {
-        [request addContact:tmpContact toContainerWithIdentifier:nil];
-    }
-    CNContactStore *store = [CNContactStore new];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL result = [store executeSaveRequest:request error:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.block) {
-                self.block(result);
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+    typeof(&*self) __weak weakSelf = self;
+    [ContactAccess requestForAccess:^(NSString *msg) {
+        if (msg == nil) {
+            return ;
+        }
+        
+        if (msg.length > 0) {
+            NSLog(msg);
+            return ;
+        }
+        //在保存时，禁止再次进行编辑操作，否则会保存最后一次的数据，此处需增加loading状态，暂时不添加了。
+        CNMutableContact *tmpContact = [FriendData parseDatasToContact:weakSelf.dataArray];
+        CNSaveRequest *request = [CNSaveRequest new];
+        if (weakSelf.contact) {
+            CNMutableContact *contact = (CNMutableContact *)[weakSelf.contact mutableCopy];
+            [FriendData multableContactWithContact:tmpContact realContact:contact];
+            [request updateContact:contact];
+        }
+        else {
+            [request addContact:tmpContact toContainerWithIdentifier:nil];
+        }
+        CNContactStore *store = [CNContactStore new];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            BOOL result = [store executeSaveRequest:request error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.block) {
+                    weakSelf.block(result);
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }
+            });
         });
-    });
+    }];
 }
 
 - (void)deleteContact
 {
-    CNMutableContact *contact = (CNMutableContact *)[self.contact mutableCopy];
-    CNSaveRequest *request = [CNSaveRequest new];
-    [request deleteContact:contact];
-    CNContactStore *store = [CNContactStore new];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL result = [store executeSaveRequest:request error:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.block) {
-                self.block(result);
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+    typeof(&*self) __weak weakSelf = self;
+    [ContactAccess requestForAccess:^(NSString *msg) {
+        if (msg == nil) {
+            return ;
+        }
+        
+        if (msg.length > 0) {
+            NSLog(msg);
+            return ;
+        }
+        CNMutableContact *contact = (CNMutableContact *)[self.contact mutableCopy];
+        CNSaveRequest *request = [CNSaveRequest new];
+        [request deleteContact:contact];
+        CNContactStore *store = [CNContactStore new];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            BOOL result = [store executeSaveRequest:request error:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (weakSelf.block) {
+                    weakSelf.block(result);
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                }
+            });
         });
-    });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

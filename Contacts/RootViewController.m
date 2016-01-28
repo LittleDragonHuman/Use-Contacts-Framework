@@ -11,6 +11,7 @@
 #import "RootViewController.h"
 #import "FriendDetailViewController.h"
 #import "FriendCell.h"
+#import "ContactAccess.h"
 
 static NSString *cellIdentifier = @"friendCell";
 
@@ -18,6 +19,7 @@ static NSString *cellIdentifier = @"friendCell";
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *allFriends;
+@property (nonatomic, strong) CNContactStore *store;
 
 @end
 
@@ -39,6 +41,7 @@ static NSString *cellIdentifier = @"friendCell";
     [self.collectionView registerClass:[FriendCell class] forCellWithReuseIdentifier:cellIdentifier];
 
     self.allFriends = [NSMutableArray array];
+    self.store = [[CNContactStore alloc] init];
     
     [self constructFriends];
 }
@@ -104,12 +107,21 @@ static NSString *cellIdentifier = @"friendCell";
 
 - (void)fetchAllFriends
 {
-    [self.allFriends removeAllObjects];
-    CNContactStore *store = [[CNContactStore alloc] init];
-    CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey,CNContactGivenNameKey,CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey,[CNContactViewController descriptorForRequiredKeys]]];
     typeof(&*self) __weak weakSelf = self;
-    [store enumerateContactsWithFetchRequest:request error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
-        [weakSelf.allFriends addObject:contact];
+    [ContactAccess requestForAccess:^(NSString *msg) {
+        if (msg == nil) {
+            return ;
+        }
+        
+        if (msg.length > 0) {
+            NSLog(msg);
+            return ;
+        }
+        [weakSelf.allFriends removeAllObjects];
+        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey,CNContactGivenNameKey,CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey,[CNContactViewController descriptorForRequiredKeys]]];
+        [weakSelf.store enumerateContactsWithFetchRequest:request error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
+            [weakSelf.allFriends addObject:contact];
+        }];
     }];
 }
 

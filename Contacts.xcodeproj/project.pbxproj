@@ -9,17 +9,18 @@
 /* Begin PBXBuildFile section */
 		140F79401C4E50D900950B0A /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F793F1C4E50D900950B0A /* Contacts.framework */; };
 		140F79421C4E50E300950B0A /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F79411C4E50E300950B0A /* ContactsUI.framework */; };
-		140F794B1C4F300D00950B0A /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794A1C4F300D00950B0A /* FriendDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		140F794E1C4F54C500950B0A /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794D1C4F54C500950B0A /* EditCell.m */; settings = {ASSET_TAGS = (); }; };
+		140F794B1C4F300D00950B0A /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794A1C4F300D00950B0A /* FriendDetailViewController.m */; };
+		140F794E1C4F54C500950B0A /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 140F794D1C4F54C500950B0A /* EditCell.m */; };
 		14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAB1C4E1D0E004DDE80 /* main.m */; };
 		14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BAE1C4E1D0E004DDE80 /* AppDelegate.m */; };
 		14A58BB71C4E1D0E004DDE80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB61C4E1D0E004DDE80 /* Assets.xcassets */; };
 		14A58BBA1C4E1D0E004DDE80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A58BB81C4E1D0E004DDE80 /* LaunchScreen.storyboard */; };
 		14A58BC51C4E1D0E004DDE80 /* ContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BC41C4E1D0E004DDE80 /* ContactsTests.m */; };
 		14A58BD01C4E1D0E004DDE80 /* ContactsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BCF1C4E1D0E004DDE80 /* ContactsUITests.m */; };
-		14A58BDF1C4E1D5F004DDE80 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BDE1C4E1D5F004DDE80 /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
-		14A58BE21C4E2035004DDE80 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE11C4E2035004DDE80 /* FriendCell.m */; settings = {ASSET_TAGS = (); }; };
-		14A58BE51C4E2357004DDE80 /* FriendData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE41C4E2357004DDE80 /* FriendData.m */; settings = {ASSET_TAGS = (); }; };
+		14A58BDF1C4E1D5F004DDE80 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BDE1C4E1D5F004DDE80 /* RootViewController.m */; };
+		14A58BE21C4E2035004DDE80 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE11C4E2035004DDE80 /* FriendCell.m */; };
+		14A58BE51C4E2357004DDE80 /* FriendData.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A58BE41C4E2357004DDE80 /* FriendData.m */; };
+		14E4A30D1C59F31F000D1AEA /* ContactAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E4A30C1C59F31F000D1AEA /* ContactAccess.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		14A58BE11C4E2035004DDE80 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		14A58BE31C4E2357004DDE80 /* FriendData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendData.h; sourceTree = "<group>"; };
 		14A58BE41C4E2357004DDE80 /* FriendData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendData.m; sourceTree = "<group>"; };
+		14E4A30B1C59F31F000D1AEA /* ContactAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactAccess.h; sourceTree = "<group>"; };
+		14E4A30C1C59F31F000D1AEA /* ContactAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactAccess.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				140F794A1C4F300D00950B0A /* FriendDetailViewController.m */,
 				140F794C1C4F54C500950B0A /* EditCell.h */,
 				140F794D1C4F54C500950B0A /* EditCell.m */,
+				14E4A30B1C59F31F000D1AEA /* ContactAccess.h */,
+				14E4A30C1C59F31F000D1AEA /* ContactAccess.m */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E4A30D1C59F31F000D1AEA /* ContactAccess.m in Sources */,
 				14A58BAF1C4E1D0E004DDE80 /* AppDelegate.m in Sources */,
 				140F794B1C4F300D00950B0A /* FriendDetailViewController.m in Sources */,
 				14A58BAC1C4E1D0E004DDE80 /* main.m in Sources */,
